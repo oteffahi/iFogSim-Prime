@@ -1,4 +1,4 @@
-package org.fog.test.perfeval;
+package org.fog.examples;
 
 import java.util.ArrayList;
 import java.util.Calendar;
