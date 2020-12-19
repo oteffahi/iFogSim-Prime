@@ -170,7 +170,7 @@ public class EmptyTopology {
 	}
 	
 	/**
-	 * Creating the software aspect of the topology, by definind modules and tuples exchanged between them
+	 * Creating the software aspect of the topology, by defining modules and tuples exchanged between them
 	 */
 	private static Application createApplication(String appId, int userId){
 		Application application = Application.createApplication(appId, userId);
