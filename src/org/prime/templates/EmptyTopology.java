@@ -81,7 +81,7 @@ public class EmptyTopology {
 			obj.setParentId(node.getId()); //parent is closest Fog node
 			obj.setUplinkLatency(0.1); //propagation time of data sent to parent.
 			fogDevices.add(obj); //all devices made must be added to the list
-			moduleMapping.addModuleToDevice("Module_Objet", "O1"); //module becomes VM on device
+			moduleMapping.addModuleToDevice("Module_Object", "O1"); //module becomes VM on device
 			
 			//creating a PERIODIC sensor called S1 with an activation period of 100 seconds, sending a tuple named "AnyTupleNameYouWant" to its parent device every 100s.
 			Sensor s = new Sensor("S1", "AnyTupleNameYouWant", broker.getId(), appId, new DeterministicDistribution(100));
