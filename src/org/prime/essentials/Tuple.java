@@ -1,4 +1,4 @@
-package org.fog.entities;
+package org.prime.essentials;
 
 import java.util.HashMap;
 import java.util.Map;

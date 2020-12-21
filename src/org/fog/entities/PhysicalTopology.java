@@ -2,6 +2,8 @@ package org.fog.entities;
 
 import java.util.List;
 
+import org.prime.essentials.FogDevice;
+
 public class PhysicalTopology {
 	
 	private List<FogDevice> fogDevices;

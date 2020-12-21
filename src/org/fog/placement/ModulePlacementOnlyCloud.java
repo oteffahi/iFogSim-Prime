@@ -9,9 +9,9 @@ import org.fog.application.AppEdge;
 import org.fog.application.AppModule;
 import org.fog.application.Application;
 import org.fog.entities.Actuator;
-import org.fog.entities.FogDevice;
 import org.fog.entities.Sensor;
-import org.fog.entities.Tuple;
+import org.prime.essentials.FogDevice;
+import org.prime.essentials.Tuple;
 
 public class ModulePlacementOnlyCloud extends ModulePlacement{
 	

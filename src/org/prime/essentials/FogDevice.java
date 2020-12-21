@@ -1,4 +1,4 @@
-package org.fog.entities;
+package org.prime.essentials;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,9 +28,10 @@ import org.fog.application.AppEdge;
 import org.fog.application.AppLoop;
 import org.fog.application.AppModule;
 import org.fog.application.Application;
+import org.fog.entities.Actuator;
+import org.fog.entities.FogDeviceCharacteristics;
 import org.fog.policy.AppModuleAllocationPolicy;
 import org.fog.scheduler.StreamOperatorScheduler;
-import org.fog.utils.Config;
 import org.fog.utils.FogEvents;
 import org.fog.utils.FogUtils;
 import org.fog.utils.Logger;

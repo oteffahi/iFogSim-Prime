@@ -17,7 +17,6 @@ import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
 import org.cloudbus.cloudsim.sdn.overbooking.BwProvisionerOverbooking;
 import org.cloudbus.cloudsim.sdn.overbooking.PeProvisionerOverbooking;
 import org.fog.entities.Actuator;
-import org.fog.entities.FogDevice;
 import org.fog.entities.FogDeviceCharacteristics;
 import org.fog.entities.PhysicalTopology;
 import org.fog.entities.Sensor;
@@ -30,6 +29,7 @@ import org.fog.utils.distribution.UniformDistribution;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.prime.essentials.FogDevice;
 
 public class JsonToTopology {
 

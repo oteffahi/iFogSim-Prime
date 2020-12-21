@@ -1,4 +1,4 @@
-package org.fog.placement;
+package org.prime.essentials;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -13,9 +13,8 @@ import org.fog.application.AppLoop;
 import org.fog.application.AppModule;
 import org.fog.application.Application;
 import org.fog.entities.Actuator;
-import org.fog.entities.FogDevice;
 import org.fog.entities.Sensor;
-import org.fog.utils.Config;
+import org.fog.placement.ModulePlacement;
 import org.fog.utils.FogEvents;
 import org.fog.utils.FogUtils;
 import org.fog.utils.NetworkUsageMonitor;

@@ -1,4 +1,4 @@
-package org.fog.utils;
+package org.prime.essentials;
 
 public class Config {
 

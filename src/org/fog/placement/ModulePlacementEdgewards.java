@@ -12,10 +12,10 @@ import org.fog.application.AppModule;
 import org.fog.application.Application;
 import org.fog.application.selectivity.SelectivityModel;
 import org.fog.entities.Actuator;
-import org.fog.entities.FogDevice;
 import org.fog.entities.Sensor;
-import org.fog.entities.Tuple;
 import org.fog.utils.Logger;
+import org.prime.essentials.FogDevice;
+import org.prime.essentials.Tuple;
 
 public class ModulePlacementEdgewards extends ModulePlacement{
 	

@@ -9,6 +9,7 @@ import org.fog.utils.FogEvents;
 import org.fog.utils.GeoLocation;
 import org.fog.utils.Logger;
 import org.fog.utils.TimeKeeper;
+import org.prime.essentials.Tuple;
 
 public class Actuator extends SimEntity{
 

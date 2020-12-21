@@ -15,6 +15,7 @@ import org.fog.utils.GeoLocation;
 import org.fog.utils.Logger;
 import org.fog.utils.TimeKeeper;
 import org.fog.utils.distribution.Distribution;
+import org.prime.essentials.Tuple;
 
 public class Sensor extends SimEntity{
 	

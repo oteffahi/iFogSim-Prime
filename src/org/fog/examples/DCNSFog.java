@@ -20,11 +20,8 @@ import org.fog.application.Application;
 import org.fog.application.selectivity.FractionalSelectivity;
 import org.fog.entities.Actuator;
 import org.fog.entities.FogBroker;
-import org.fog.entities.FogDevice;
 import org.fog.entities.FogDeviceCharacteristics;
 import org.fog.entities.Sensor;
-import org.fog.entities.Tuple;
-import org.fog.placement.Controller;
 import org.fog.placement.ModuleMapping;
 import org.fog.placement.ModulePlacementEdgewards;
 import org.fog.placement.ModulePlacementMapping;
@@ -34,6 +31,9 @@ import org.fog.utils.FogLinearPowerModel;
 import org.fog.utils.FogUtils;
 import org.fog.utils.TimeKeeper;
 import org.fog.utils.distribution.DeterministicDistribution;
+import org.prime.essentials.Controller;
+import org.prime.essentials.FogDevice;
+import org.prime.essentials.Tuple;
 
 /**
  * Simulation setup for case study 2 - Intelligent Surveillance
