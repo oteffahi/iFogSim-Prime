@@ -97,12 +97,14 @@ public class Controller extends SimEntity{
 			manageResources();
 			break;
 		case FogEvents.STOP_SIMULATION:
-			CloudSim.stopSimulation();
-			printTimeDetails();
-			printPowerDetails();
-			printCostDetails();
-			printNetworkUsageDetails();
-			System.exit(0);
+			CloudSim.terminateSimulation();
+			System.out.println("Simulation completed successfuly.");
+			if(Config.SHOW_CONTROLLER_SIM_RESULTS) {
+				printTimeDetails();
+				printPowerDetails();
+				printCostDetails();
+				printNetworkUsageDetails();
+			}
 			break;
 			
 		}

@@ -32,6 +32,7 @@ import org.fog.entities.Actuator;
 import org.fog.entities.FogDeviceCharacteristics;
 import org.fog.policy.AppModuleAllocationPolicy;
 import org.fog.scheduler.StreamOperatorScheduler;
+import org.prime.essentials.Config;
 import org.fog.utils.FogEvents;
 import org.fog.utils.FogUtils;
 import org.fog.utils.Logger;
@@ -40,6 +41,7 @@ import org.fog.utils.NetworkUsageMonitor;
 import org.fog.utils.TimeKeeper;
 
 public class FogDevice extends PowerDatacenter {
+	private static int simProgress = -1; //used to print out simulation progress while it is running
 	protected Queue<Tuple> northTupleQueue;
 	protected Queue<Pair<Tuple, Integer>> southTupleQueue;
 	
@@ -248,6 +250,14 @@ public class FogDevice extends PowerDatacenter {
 	protected void processOtherEvent(SimEvent ev) {
 		switch(ev.getTag()){
 		case FogEvents.TUPLE_ARRIVAL:
+			//Log tuples if enabled in Config
+			if(Config.LOG_ALL_TUPLE_ARRIVALS) {
+				System.out.println(ev+" tuple = "+((Tuple)ev.getData()).getTupleType()+" Arrival = "+CloudSim.clock()+"s");
+			}
+			else if(Config.LOG_TUPLE_ARRIVALS && ev.getSource() != ev.getDestination()) {
+				System.out.println(ev+" tuple = "+((Tuple)ev.getData()).getTupleType()+" Arrival = "+CloudSim.clock()+"s");
+			}
+			
 			processTupleArrival(ev);
 			break;
 		case FogEvents.LAUNCH_MODULE:
@@ -292,8 +302,20 @@ public class FogDevice extends PowerDatacenter {
 	 * @param ev
 	 */
 	private void manageResources(SimEvent ev) {
-		updateEnergyConsumption();
-		send(getId(), Config.RESOURCE_MGMT_INTERVAL, FogEvents.RESOURCE_MGMT);
+		if(!Config.LOG_ALL_TUPLE_ARRIVALS && !Config.LOG_TUPLE_ARRIVALS) { //if no tuple logging is enabled
+			if(getName().equals("cloud")) { //cloud resource management is used as a periodic simulation progress update
+				int x = (int)(CloudSim.clock()/Config.MAX_SIMULATION_TIME * 100);
+				if(x != simProgress) {
+					System.out.print(x+"% ");
+					simProgress = x;
+				}
+				if(CloudSim.clock() == Config.MAX_SIMULATION_TIME) //Config.MAX_SIMULATION_TIME must be a multiple of Config.RESOURCE_MGMT_INTERVAL
+					System.out.print("\n");
+			}
+		}
+		//update allocated MIPS before updating energy consumption (called by updateAllocatedMips)
+		updateAllocatedMips(null);
+		send(getId(), Config.RESOURCE_MANAGE_INTERVAL, FogEvents.RESOURCE_MGMT);
 	}
 
 	/**
