@@ -111,7 +111,10 @@ public class Controller extends SimEntity{
 	}
 	
 	private void printNetworkUsageDetails() {
-		System.out.println("Total network usage = "+NetworkUsageMonitor.getNetworkUsage()/Config.MAX_SIMULATION_TIME);		
+		System.out.println("Average total network usage = "+NetworkUsageMonitor.getNetworkUsage()/Config.MAX_SIMULATION_TIME+" units/s");
+		for(FogDevice f : fogDevices) {
+			System.out.println(f.getName()+" ---> "+f.getNetworkUsage()/Config.MAX_SIMULATION_TIME+" units/s");
+		}
 	}
 
 	private FogDevice getCloud(){

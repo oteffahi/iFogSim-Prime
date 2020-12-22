@@ -42,6 +42,8 @@ import org.fog.utils.TimeKeeper;
 
 public class FogDevice extends PowerDatacenter {
 	private static int simProgress = -1; //used to print out simulation progress while it is running
+	protected double networkUsage = 0;
+	
 	protected Queue<Tuple> northTupleQueue;
 	protected Queue<Pair<Tuple, Integer>> southTupleQueue;
 	
@@ -820,7 +822,8 @@ public class FogDevice extends PowerDatacenter {
 		setNorthLinkBusy(true);
 		send(getId(), networkDelay, FogEvents.UPDATE_NORTH_TUPLE_QUEUE);
 		send(parentId, networkDelay+getUplinkLatency(), FogEvents.TUPLE_ARRIVAL, tuple);
-		NetworkUsageMonitor.sendingTuple(getUplinkLatency(), tuple.getCloudletFileSize());
+		NetworkUsageMonitor.sendingTuple(tuple.getCloudletFileSize());
+		addNetworkUsage(tuple.getCloudletFileSize());
 	}
 	
 	protected void sendUp(Tuple tuple){
@@ -850,7 +853,8 @@ public class FogDevice extends PowerDatacenter {
 		double latency = getChildToLatencyMap().get(childId);
 		send(getId(), networkDelay, FogEvents.UPDATE_SOUTH_TUPLE_QUEUE);
 		send(childId, networkDelay+latency, FogEvents.TUPLE_ARRIVAL, tuple);
-		NetworkUsageMonitor.sendingTuple(latency, tuple.getCloudletFileSize());
+		NetworkUsageMonitor.sendingTuple(tuple.getCloudletFileSize());
+		addNetworkUsage(tuple.getCloudletFileSize());
 	}
 	
 	protected void sendDown(Tuple tuple, int childId){
@@ -1010,5 +1014,13 @@ public class FogDevice extends PowerDatacenter {
 	public void setModuleInstanceCount(
 			Map<String, Map<String, Integer>> moduleInstanceCount) {
 		this.moduleInstanceCount = moduleInstanceCount;
+	}
+	
+	public void addNetworkUsage(double tupleNwSize) {
+		networkUsage+= tupleNwSize;
+	}
+	
+	public double getNetworkUsage() {
+		return networkUsage;
 	}
 }
