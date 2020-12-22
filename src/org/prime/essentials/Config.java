@@ -15,7 +15,7 @@ public class Config {
 	public static double FOG_DEVICE_COST_PER_BW = 0.0;
 	
 	//iFogSim-Prime config
+	public static boolean LOG_TUPLE_ARRIVALS = false; //log FogDevice tuple arrivals that are not sendToSelf calls
 	public static boolean LOG_ALL_TUPLE_ARRIVALS = false; //log all FogDevice tuple arrivals including sendToSelf calls
-	public static boolean LOG_TUPLE_ARRIVALS = true; //log FogDevice tuple arrivals that are not sendToSelf calls
 	public static boolean SHOW_CONTROLLER_SIM_RESULTS = false; //print out simulation results as implemented by default in the Controller class
 }

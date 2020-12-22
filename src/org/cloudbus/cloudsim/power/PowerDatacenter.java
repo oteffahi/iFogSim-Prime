@@ -141,7 +141,7 @@ public class PowerDatacenter extends Datacenter {
 			// schedules an event to the next time
 			if (minTime != Double.MAX_VALUE) {
 				CloudSim.cancelAll(getId(), new PredicateType(CloudSimTags.VM_DATACENTER_EVENT));
-				send(getId(), getSchedulingInterval(), CloudSimTags.VM_DATACENTER_EVENT);
+				send(getId(), minTime - CloudSim.clock() + CloudSim.getMinTimeBetweenEvents(), CloudSimTags.VM_DATACENTER_EVENT);
 			}
 
 			setLastProcessTime(currentTime);

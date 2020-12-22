@@ -555,7 +555,6 @@ public class FogDevice extends PowerDatacenter {
 				{add(0.0);}});
 			}
 		}
-		
 		updateEnergyConsumption();
 		
 	}
@@ -777,15 +776,20 @@ public class FogDevice extends PowerDatacenter {
 			appToModulesMap.put(appId, new ArrayList<String>());
 		}
 		appToModulesMap.get(appId).add(module.getName());
+		
+		/**
+		 * Unnecessary code that creates second instances of VMs which break energy consumption and CPU usage calculations
+		 */
+		/*
 		processVmCreate(ev, false);
 		if (module.isBeingInstantiated()) {
 			module.setBeingInstantiated(false);
 		}
-		
-		initializePeriodicTuples(module);
-		
 		module.updateVmProcessing(CloudSim.clock(), getVmAllocationPolicy().getHost(module).getVmScheduler()
 				.getAllocatedMipsForVm(module));
+		*/
+		
+		initializePeriodicTuples(module);
 	}
 	
 	private void initializePeriodicTuples(AppModule module) {
