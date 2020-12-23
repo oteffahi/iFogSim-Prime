@@ -19,4 +19,5 @@ public class Config {
 	public static boolean LOG_TUPLE_ARRIVALS = false; //log FogDevice tuple arrivals that are not sendToSelf calls
 	public static boolean LOG_ALL_TUPLE_ARRIVALS = false; //log all FogDevice tuple arrivals including sendToSelf calls
 	public static boolean SHOW_CONTROLLER_SIM_RESULTS = true; //print out simulation results as implemented by default in the Controller class
+	public static boolean LAST_APPLOOP_TUPLES_EXEC = true; //if set to TRUE, execution time of last tuple in any AppLoop will be counted in the AppLoop delay. Set to FALSE otherwise
 }

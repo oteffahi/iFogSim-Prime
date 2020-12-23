@@ -488,6 +488,8 @@ public class FogDevice extends PowerDatacenter {
 						cloudletCompleted = true;
 						Tuple tuple = (Tuple)cl;
 						TimeKeeper.getInstance().tupleEndedExecution(tuple);
+						if(Config.LAST_APPLOOP_TUPLES_EXEC)
+							updateAppLoopTimings(tuple);
 						Application application = getApplicationMap().get(tuple.getAppId());
 						Logger.debug(getName(), "Completed execution of tuple "+tuple.getCloudletId()+"on "+tuple.getDestModuleName());
 						List<Tuple> resultantTuples = application.getResultantTuples(tuple.getDestModuleName(), tuple, getId(), vm.getId());
@@ -688,8 +690,8 @@ public class FogDevice extends PowerDatacenter {
 				}
 				tuple.setVmId(vmId);
 				//Logger.error(getName(), "Executing tuple for operator " + moduleName);
-				
-				updateTimingsOnReceipt(tuple);
+				if(!Config.LAST_APPLOOP_TUPLES_EXEC)
+					updateAppLoopTimings(tuple);
 				
 				executeTuple(ev, tuple.getDestModuleName());
 			}else if(tuple.getDestModuleName()!=null){
@@ -712,7 +714,7 @@ public class FogDevice extends PowerDatacenter {
 		}
 	}
 
-	protected void updateTimingsOnReceipt(Tuple tuple) {
+	protected void updateAppLoopTimings(Tuple tuple) {
 		Application app = getApplicationMap().get(tuple.getAppId());
 		String srcModule = tuple.getSrcModuleName();
 		String destModule = tuple.getDestModuleName();
